@@ -1,0 +1,47 @@
+contacts = []
+def user_interface ():
+    print("Contact Management System")
+    print("1. Add a contact:")
+    print("2. Retrieve a contact:")
+    print("3. Exit:")
+def add_contact ():
+    name = (input("Enter name:"))
+    phone= int(input("Enter phone:"))
+    email= (input("Enter email:"))
+    address= (input("Enter address:"))
+    contact = {
+        "Name": name,
+        "Phone": phone,
+        "Email": email,
+        "Address": address
+    }
+    contacts.append(contact)
+def retrieve_contact():
+    name = input("Enter name to retrieve")
+    contact_yes = [contact for contact in contacts if contact["Name"] == name]
+    if contact_yes:
+        print("Contact Information:")
+        for contact in contact_yes:
+            print("Name: " + contact['Name'])
+            print("Phone Number: " + str(contact['Phone']))
+            print("Email: " + contact['Email'])
+            print("Address: " + contact['Address'])
+            break
+    else:
+        print("Contact not found")
+def start():
+    while True:
+        user_interface()
+        choice = input("Choose from the above options: ")
+        if choice == "1":
+            add_contact()
+        elif choice == "2":
+            retrieve_contact()
+        elif choice == "3":
+            print("Exit")
+            break
+        else:
+            print("Invalid choice")
+
+if __name__ == "__main__":
+    start()
